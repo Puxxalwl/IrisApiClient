@@ -1,0 +1,13 @@
+{
+    "IrisApi": {
+        "IrisUrl": "https://iris-tg.ru/api",
+        "botId": "Ид бота",
+        "IrisToken": "Iris-Token который можно получить у @irisism"
+    },
+    "Logging": {
+        "LogLevel": {
+            "default": "Information", 
+            "Microsoft": "Warning"
+        }
+    }
+}
