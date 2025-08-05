@@ -10,7 +10,9 @@ namespace IrisClient.Constants
         public const string Open = "/enable";
         public const string Close = "/disable";
         public const string AllowUser = "/allow_user";
-        public const string DenyUser = "/deny_user"; 
+        public const string DenyUser = "/deny_user";
+        public const string AllAllow = "/allow_all";
+        public const string AllDeny = "/deny_all"; 
     }
 }
 
