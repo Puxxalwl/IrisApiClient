@@ -1,0 +1,5 @@
+obj/
+bin/
+
+# Settings in Iris-APi
+IrisSettings.json
