@@ -89,17 +89,54 @@ namespace IrisClient.Services
             }
         }
 
-        public async Task<Open> OpenBag(bool Status)
+        public async Task<Result> OpenBag(bool Status)
         {
             try
             {
                 var url = $"{_irisUrl}{(Status == true ? ApiConstants.Open : ApiConstants.Close)}";
 
-                var result = await _httpClient.getWithRetryAsync<Open>(url);
+                var result = await _httpClient.getWithRetryAsync<Result>(url);
                 return result;
-            }catch (Exception err)
+            }
+            catch (Exception err)
             {
                 _logger.LogError($"Ошибка открытия/закрытия мешка: {err.Message}", err);
+                throw;
+            }
+        }
+        public async Task<Result> AllowAll(bool Status)
+        {
+            try
+            {
+                var url = $"{_irisUrl}{(Status == true ? ApiConstants.AllAllow : ApiConstants.AllDeny)}";
+
+                var result = await _httpClient.getWithRetryAsync<Result>(url);
+                return result;
+            }
+            catch (Exception err)
+            {
+                _logger.LogError($"Ошибка при изменении статуса переводов для всех: {err.Message}", err);
+                throw;
+            }
+
+        }
+
+        public async Task<Result> AllowUser(bool Status, long userId)
+        {
+            try
+            {
+                var url = $"{_irisUrl}{(Status == true ? ApiConstants.AllowUser : ApiConstants.DenyUser)}";
+                var Params = new Dictionary<string, object>
+                {
+                    ["user_id"] = userId
+                };
+
+                var result = await _httpClient.getWithRetryAsync<Result>(url, Params);
+                return result;
+            }
+            catch (Exception err)
+            {
+                _logger.LogError($"Ошибка при изменении статуса переводов для пользователя (userId: {userId}): {err.Message}", err);
                 throw;
             }
         }
