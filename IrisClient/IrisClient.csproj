@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable> 
 
     <PackageId>IrisAPi</PackageId>
-    <Version>1.0.1</Version>
+    <Version>1.1.1</Version>
     <Authors>Puxxalwl</Authors>
     <Description>Асинхронный клиент для работы с Api Iris | Чат-менеджера на C#</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
