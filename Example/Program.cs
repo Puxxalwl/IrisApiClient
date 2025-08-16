@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using IrisClient.Config;
 using IrisClient.Services;
 
+
 class Program
 {
     static async Task Main(string[] args)
@@ -19,7 +20,7 @@ class Program
             var giveSweets = await client.GiveSweets(userId: 123456789, sweets: 10.1, withoutDonateScore: true, Comment: "Подарочек"); // Перевести ириски
             if (giveSweets.result == "ok")
             {
-                Console.WriteLine($"Перевод ирисок инфо:\nКол-во: {giveSweets.amount}, кому: {giveSweets}");
+                Console.WriteLine($"Перевод ирисок инфо:\nКол-во: {giveSweets.amount}, кому: {giveSweets.to_user_id}");
             }
             else
             {

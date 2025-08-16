@@ -33,10 +33,10 @@ namespace IrisClient.Extensions
                     {
                         try
                         {
-                            var apiError = JsonSerializer.Deserialize<ApiError>(content);
-                            throw new Exception($"API ошибка {apiError?.error_code}: {apiError?.description}");
+                            var apiError = JsonSerializer.Deserialize<ApiErrorResponse>(content);
+                            throw new Exception($"API ошибка {apiError?.error.code}: {apiError?.error.description}");
                         }
-                        catch
+                        catch (JsonException)
                         {
                             throw new HttpRequestException($"HTTP ошибка {response.StatusCode}: {content}");
                         }
@@ -69,9 +69,14 @@ namespace IrisClient.Extensions
         }
     }
 
+    public class ApiErrorResponse
+    {
+        public ApiError error { get; set; } = new();
+    }
+
     public class ApiError
     {
-        public int error_code { get; set; }
+        public int code { get; set; }
         public string description { get; set; } = "";
     }
 }

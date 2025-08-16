@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="IrisApi" Version="1.0.1" />
+    <PackageReference Include="IrisApi" Version="1.1.1" />
   </ItemGroup>
 
 </Project>
